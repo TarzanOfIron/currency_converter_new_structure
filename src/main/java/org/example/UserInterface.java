@@ -7,48 +7,38 @@ import java.util.Scanner;
 
 public class UserInterface {
 
+    public static MyCurrency SEK = new MyCurrency(new BigDecimal("1"));
+    public static MyCurrency USD = new MyCurrency(new BigDecimal("0.09"));
+    public static MyCurrency EUR = new MyCurrency(new BigDecimal("0.087"));
+
+
     public static void startProgram () {
-        configureCurrencies();
-
-
+        System.out.println(Converter.convert(printMenuFromCurrency(), printMenuToCurrency(), enterAmountToExchange()));
+        System.out.println(displayDateAndTime());
     }
 
-    public static void configureCurrencies () {
-        Currency USD = new Currency();
-        USD.oneSEKequals = new BigDecimal("0.09");
-
-        Currency SEK = new Currency();
-        SEK.oneSEKequals = new BigDecimal("1");
-
-        Currency EUR = new Currency();
-        EUR.oneSEKequals = new BigDecimal("0.087");
-    }
-
-    public static void printMenuFromValue () {
+    public static int printMenuFromCurrency() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("What currency would you like to exchange?");
         System.out.println("1. SEK");
         System.out.println("2. USD");
         System.out.println("3. EUR");
+        return sc.nextInt();
     }
 
-    public static void printMenuToValue () {
+    public static int printMenuToCurrency() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("To what currency would you like to exchange to?");
         System.out.println("1. SEK");
         System.out.println("2. USD");
         System.out.println("3. EUR");
+        return sc.nextInt();
     }
 
-    public static void enterAmount () {
-        System.out.println("How much would you like to exchange? :");
-    }
-
-    public static void collectUserInput() {
+    public static BigDecimal enterAmountToExchange() {
         Scanner sc = new Scanner(System.in);
-        int optionOne, optionTwo;
-        printMenuFromValue();
-        optionOne = sc.nextInt();
-        printMenuFromValue();
-        optionTwo = sc.nextInt();
+        System.out.println("How much would you like to exchange? :");
+        return sc.nextBigDecimal();
     }
 
     public static String displayDateAndTime () {
