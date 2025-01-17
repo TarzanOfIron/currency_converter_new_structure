@@ -1,5 +1,6 @@
 package org.example;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -7,8 +8,20 @@ import java.util.Scanner;
 public class UserInterface {
 
     public static void startProgram () {
-        //collectUserInput();
-        System.out.println(displayDateAndTime());
+        configureCurrencies();
+
+
+    }
+
+    public static void configureCurrencies () {
+        Currency USD = new Currency();
+        USD.oneSEKequals = new BigDecimal("0.09");
+
+        Currency SEK = new Currency();
+        SEK.oneSEKequals = new BigDecimal("1");
+
+        Currency EUR = new Currency();
+        EUR.oneSEKequals = new BigDecimal("0.087");
     }
 
     public static void printMenuFromValue () {
